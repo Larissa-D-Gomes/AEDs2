@@ -3,7 +3,7 @@ Nome: Larissa Domingues Gomes
 Turno: Manha
 Numero de Matricula: 650525
 Professor: Felipe Cunha 
-Questao:Classe Personagens Star Wars Java Arvore Binaria
+Questao: Classe Personagens Star Wars Java Arvore Binaria
 */
 
 class ArvoreBin{
