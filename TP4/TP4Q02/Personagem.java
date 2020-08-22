@@ -35,6 +35,7 @@ class Personagem
       this.genero = "";
       this.homeWorld = "";
    }
+
    public static String ISO88591toUTF8(String strISO) throws Exception {
 		byte[] isoBytes = strISO.getBytes("ISO-8859-1");
 		return new String(isoBytes, "UTF-8");
@@ -48,107 +49,55 @@ class Personagem
    {
       dados = new String(dados.getBytes(), "ISO-8859-1");
       //MyIO.println(dados);
-      int cursor = 10;//Pular caracteres "{'name': '"
-      char c = dados.charAt(cursor);
-      String aux = "";//String para fazer leitura para variaveis int
-      while((int)c != 39)
-      {
-         this.nome+=c;
-         cursor++;
-         c = dados.charAt(cursor);
-      }
+      
+      String aux = dados.substring(dados.indexOf("name") + 8);//String para fazer leitura para variaveis int
+      aux = aux.substring(0, aux.indexOf("'"));
+      this.nome = aux;
       //MyIO.println(this.nome);
       
-      cursor+=14; //Pular caracteres "', 'height': '"
-      c = dados.charAt(cursor);
-      while((int)c != 39)
-      {
-         aux+=c;
-         cursor++;
-         c = dados.charAt(cursor);
-      }
+      aux = dados.substring(dados.indexOf("height") + 10);//String para fazer leitura para variaveis int
+      aux = aux.substring(0, aux.indexOf("'"));
       if(aux.equals("unknown"))
          this.altura = 0;
       else
          this.altura = Integer.parseInt(aux);//Converter String para inteiro
       //MyIO.println(this.altura);
-      aux = "";//Limpar String aux
       
-      cursor+=12; //Pular caracteres "', 'mass': '"
-      c = dados.charAt(cursor);
-      while((int)c != 39)
-      {
-         aux+=c;
-         cursor++;
-         c = dados.charAt(cursor);
-      }
+      aux = dados.substring(dados.indexOf("mass") + 8);//String para fazer leitura para variaveis int
+      aux = aux.substring(0, aux.indexOf("'"));
+
       if(aux.equals("unknown"))
          this.peso = 0;
-      else
-      {
+      else{
          this.peso = Double.parseDouble(aux.replace(",",""));//Converter String para inteiro
       }
       //MyIO.println(this.peso);
-      
-      cursor+=18; //Pular caracteres ', 'hair_color': '"
-      c = dados.charAt(cursor);
-      while((int)c != 39)
-      {
-         this.corDoCabelo+=c;
-         cursor++;
-         c = dados.charAt(cursor);
-      }
+
+      aux = dados.substring(dados.indexOf("hair_color") + 14);//String para fazer leitura para variaveis int
+      aux = aux.substring(0, aux.indexOf("'"));
+      this.corDoCabelo = aux;
       //MyIO.println(this.corDoCabelo);
       
-      cursor+=18; //Pular caracteres "', 'skin_color': '"
-      c = dados.charAt(cursor);
-      while((int)c != 39)
-      {
-         this.corDaPele+=c;
-         cursor++;
-         c = dados.charAt(cursor);
-      }
-      //MyIO.println(this.corDaPele);
-      
-      cursor+=17; //Pular caracteres "', 'eye_color': '"
-      c = dados.charAt(cursor);
-      while((int)c != 39)
-      {
-         this.corDosOlhos+=c;
-         cursor++;
-         c = dados.charAt(cursor);
-      }
+      aux = dados.substring(dados.indexOf("eye_color") + 13);//String para fazer leitura para variaveis int
+      aux = aux.substring(0, aux.indexOf("'"));
+      this.corDosOlhos = aux;
       //MyIO.println(this.corDosOlhos);
-      
-      cursor+=18; //Pular caracteres "', 'birth_year': '"
-      c = dados.charAt(cursor);
-      while((int)c != 39)
-      {
-         this.anoNascimento+=c;
-         cursor++;
-         c = dados.charAt(cursor);
-      }
+
+      aux = dados.substring(dados.indexOf("birth_year") + 14);//String para fazer leitura para variaveis int
+      aux = aux.substring(0, aux.indexOf("'"));
+      this.anoNascimento = aux;
       //MyIO.println(this.anoNascimento);
       
-      cursor+=14; //Pular caracteres "', 'gender': '"
-      c = dados.charAt(cursor);
-      while((int)c != 39)
-      {
-         this.genero+=c;
-         cursor++;
-         c = dados.charAt(cursor);
-      }
+
+      aux = dados.substring(dados.indexOf("gender") + 10);//String para fazer leitura para variaveis int
+      aux = aux.substring(0, aux.indexOf("'"));
+      this.genero = aux;
       //MyIO.println(this.genero);
       
-      cursor+=17; //Pular caracteres "', 'homeworld': '"
-      c = dados.charAt(cursor);
-      while((int)c != 39)
-      {
-         this.homeWorld+=c;
-         cursor++;
-         c = dados.charAt(cursor);
-      }
-      //MyIO.println(this.homeWorld);   
+      aux = dados.substring(dados.indexOf("homeworld") + 13);//String para fazer leitura para variaveis int
+      aux = aux.substring(0, aux.indexOf("'"));
+      this.homeWorld = aux;
+      //MyIO.println(this.homeWorld);  
    }
    
     /*Construtor vazio*/
